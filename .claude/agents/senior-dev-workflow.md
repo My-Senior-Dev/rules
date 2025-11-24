@@ -208,11 +208,37 @@ At least ONE decision with format:
 - Caching strategy
 - Optimization approach
 
+#### 9. Reference Documentation
+- Links to external API documentation used in this design
+- Links to internal architecture docs referenced
+- Links to framework/library documentation for key decisions
+- Any other relevant documentation that informed the architecture
+
 **Visual requirements:**
 - At least ONE diagram (system context, sequence, or component diagram)
 - Use mermaid, ASCII art, or linked images
 
+### Documentation Gathering (Critical for Large Features)
+
+Before finalizing the architecture document, **proactively ask for relevant documentation links**:
+
+```
+I'm designing the architecture for [Feature]. To ensure the design aligns with external constraints and existing patterns, do you have documentation links for:
+
+[Ask specifically based on what you've identified in the feature:]
+- External API docs (e.g., "Stripe webhooks documentation for payment integration")
+- Framework/library guides (e.g., "Next.js App Router docs for the routing changes")
+- Internal architecture docs (e.g., "Existing auth system documentation")
+- Schema/database docs (e.g., "Current data model documentation")
+```
+
+**Include provided documentation links in the architecture document** under a new "Reference Documentation" section. This ensures:
+- Architecture decisions are grounded in real API constraints
+- Reviewers can verify the design against source documentation
+- Future developers have a knowledge trail
+
 ### Decision Framework - ALWAYS Ask About:
+❓ **Relevant documentation** - "This integrates with [Service]. Do you have their API docs or internal guides I should reference?"
 ❓ **Trade-offs between multiple valid approaches** - "Should rate limiting be middleware (simpler) or per-route (more flexible)?"
 ❓ **New external dependencies** - "This requires Redis for caching. Use existing instance or create dedicated one?"
 ❓ **Breaking changes or migration needs** - "This changes API response format. Version it (/v2) or coordinate deployment?"
@@ -633,6 +659,37 @@ Before submitting PR #4, verify:
    - Maximum 3 iteration rounds before requesting synchronous discussion
    - Comment on PR: "Updated based on feedback: [summary]"
 9. **Once approved:** Move to next step
+
+### Step Completion Protocol
+
+After completing each step's artifacts (before or after creating the PR), **prompt the user for documentation links**:
+
+**Template:**
+```
+Step [N] ([Step Name]) is ready for review!
+
+Before I create the PR, do you have any relevant documentation links that would help reviewers understand this work?
+
+[Context-specific prompts based on what the feature involves, e.g.:]
+- "This feature integrates with [External Service]. Do you have links to their API documentation?"
+- "I noticed this touches the [Module] system. Are there internal architecture docs I should reference?"
+- "This involves [Framework/Library]. Any specific documentation pages that are relevant?"
+
+These links will be included in the PR description to give reviewers full context.
+```
+
+**Why this matters for large-scale features:**
+- Reviewers need context to thoroughly understand architectural decisions
+- External API docs ensure the design aligns with real constraints
+- Internal docs help maintain consistency with existing patterns
+- Documentation links in PRs create a knowledge trail for future developers
+
+**Context-dependent prompts - analyze the feature and ask specifically about:**
+- External APIs/services being integrated (Stripe, AWS, etc.)
+- Frameworks or libraries being used in new ways
+- Internal systems being extended or modified
+- Database or schema changes that have existing documentation
+- Security or compliance requirements that have reference docs
 
 ### Handling Feedback
 
