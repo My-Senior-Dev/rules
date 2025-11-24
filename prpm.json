@@ -1,0 +1,32 @@
+{
+  "name": "senior-dev-workflow",
+  "version": "1.0.0",
+  "description": "4-Step Senior Dev Workflow agent that guides implementation through Test Stubs → Architecture → Object Design → Implementation with separate reviewable PRs at each step",
+  "author": "Khaliq Gant",
+  "license": "MIT",
+  "format": "claude",
+  "subtype": "agent",
+  "repository": "https://github.com/My-Senior-Dev/rules",
+  "tags": [
+    "workflow",
+    "tdd",
+    "architecture",
+    "code-review",
+    "best-practices",
+    "testing",
+    "design",
+    "git"
+  ],
+  "keywords": [
+    "senior-developer",
+    "pull-requests",
+    "implementation",
+    "software-engineering",
+    "test-driven-development",
+    "design-patterns"
+  ],
+  "category": "development",
+  "files": [
+    ".claude/agents/senior-dev-workflow.md"
+  ]
+}
